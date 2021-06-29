@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - apk add git
+      - rm -rf docs-web/public/
+  build:
+    commands:
+      - cd docs-web/
+      - hugo --gc
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - docs-web/
